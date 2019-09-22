@@ -1,24 +1,20 @@
-#include <iostream>
+ï»¿#include <iostream>
 using namespace std;
 
 int main()
 {
 	/*int five = 5;
 	float two = 2.0F;
-
 	cout << five/static_cast<int>(two) << endl;*/
-
 	//bool b = 5 < 7;
 	//if (b)
 	//{
 	//}
-
 	//int i = 0;
 	//do
 	//{
 	//	cout << "hello world" << endl;
 	//}while (i > 10)
-
 	//for (int i = 0; i < 10; )
 	//{
 	//	/*cout << i << endl;*/
@@ -28,48 +24,58 @@ int main()
 	//cout << ++value << endl;
 	/*cout << value++ << endl;*/
 
+
+
 	//Homework
 	setlocale(LC_ALL, "Russian");
 	int kolvo;
 	long long val;
 	int kontrol;
 	int sum = 0;
-	long long ten = 100000000000;
-	int koef = 1;
+	long long ten = 1000000000000;
 	long long newval;
 	int newkontr;
-	cout << "Ââåäèòå êîëè÷åñòâî N" << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ N" << endl;
 	cin >> kolvo;
-	 
+
+
 	for (int i = 0; i < kolvo; i++)
 	{
-		cout << endl << "Ââåäèòå 13-òè çíà÷íîå ÷èñëî" << endl;
+		cout << endl << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ 13-Ñ‚Ð¸ Ð·Ð½Ð°Ñ‡Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾" << endl;
 		cin >> val;
-		newval = val - (val % 10);
-		for (int i = 0; i < 12; i++)
+		if ((val / 1000000000000 > 9) || (val / 1000000000000 < 1))
 		{
-			if (i % 2 == 0)
-			{
-				sum = sum + newval / ten % 10 * 1;
-				ten = ten / 10;
-			}
-			else
-			{
-				sum = sum + newval / ten % 10 * 3;
-				ten = ten / 10;
-			}
-			
-		}
-
-		kontrol = sum % 10;
-		newkontr = 10 - kontrol;
-		if (val == (newval + newkontr))
-		{
-			cout << "Íîìåð äåéñòâèòåëåí" << endl;
+			cout << "Ð§Ð¸ÑÐ»Ð¾ Ð½Ðµ 13-Ñ‚Ð¸ Ð·Ð½Ð°Ñ‡Ð½Ð¾Ðµ" << endl;
 		}
 		else
 		{
-			cout << "Íîìåð íå äåéñòâèòåëåí" << endl;
+			newval = val - (val % 10);
+			for (int i = 0; i < 12; i++)
+			{
+				if (i % 2 == 0)
+				{
+					sum = sum + newval / ten % 10 * 1;
+					ten = ten / 10;
+				}
+				else
+				{
+					sum = sum + newval / ten % 10 * 3;
+					ten = ten / 10;
+				}
+			}
+			kontrol = sum % 10;
+			newkontr = 10 - kontrol;
+			if ((val % 10) == newkontr)
+			{
+				cout << "Ð§Ð¸ÑÐ»Ð¾ " << val << " -- Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ ISBN-13" << endl;
+			}
+			else
+			{
+				cout << "Ð§Ð¸ÑÐ»Ð¾ " << val << " -- Ð½Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ðµ ISBN-13" << endl;
+			}
+			sum = 0;
+			ten = 1000000000000;
 		}
 	}
+	cout << "Ð ÐÐ‘ÐžÐ¢Ð ÐžÐšÐžÐÐ§Ð•ÐÐ" << endl;
 }
