@@ -1,81 +1,150 @@
-﻿#include <iostream>
+#include <iostream>
+#include <limits>
 using namespace std;
 
-int main()
+/*const int SIZE = 5;
+int sum(int a[], int size)
 {
-	/*int five = 5;
-	float two = 2.0F;
-	cout << five/static_cast<int>(two) << endl;*/
-	//bool b = 5 < 7;
-	//if (b)
-	//{
-	//}
-	//int i = 0;
-	//do
-	//{
-	//	cout << "hello world" << endl;
-	//}while (i > 10)
-	//for (int i = 0; i < 10; )
-	//{
-	//	/*cout << i << endl;*/
-	//	++i;
-	//}
-	//int value = 10;
-	//cout << ++value << endl;
-	/*cout << value++ << endl;*/
-
-
-
-	//Homework
-	setlocale(LC_ALL, "Russian");
-	int kolvo;
-	long long val;
-	int kontrol;
 	int sum = 0;
-	long long ten = 1000000000000;
-	long long newval;
-	int newkontr;
-	cout << "Введите количество N" << endl;
-	cin >> kolvo;
-
-
-	for (int i = 0; i < kolvo; i++)
+	for (int i = 0; i < size; ++i)
 	{
-		cout << endl << "Введите 13-ти значное число" << endl;
-		cin >> val;
-		if ((val / 1000000000000 > 9) || (val / 1000000000000 < 1))
+		sum += a[i];
+	}
+	return sum;
+}*/
+
+   /* int CountLength(char b[])
+{
+	int i = 0;
+	int size = 0;
+	while (b[i] != '\0')
+	{
+		size++;
+		
+	}
+	return size;
+}*/
+
+//int findmax(int a[], int size)
+//{
+//	int max = a[0];
+//
+//	for (int i = 1; i < size; ++i)
+//	{
+//		if (a[i] > max)
+//		{
+//			max = a[i];
+//		}
+//	}
+//	return max;
+//}
+
+//int findmoda(int data[], int size)
+//{
+//	int count = 0;
+//	int value = 0;
+//	for (int i = 0; i < size; ++i)
+//	{
+//		int current = data[i];
+//		int currentCount = 1;
+//		for (int j = i + 1; j < size; ++j)
+//		{
+//			if (data[j] == current)
+//			{
+//				++count;
+//			}
+//		}
+//		if (currentCount > count)
+//		{
+//			count = currentCount;
+//			value = current;
+//		}
+//	}
+//	return value;
+//}
+
+void sortData(int data[], int size)
+{
+	bool isSwap = false;
+	for (int i = 0; i < size; ++i)
+	{
+		for (int j = 0; j < size - 1 - i ;++j)
 		{
-			cout << "Число не 13-ти значное" << endl;
+			if (data[j] > data[j+1])
+			{
+				int temp = data[j];
+				data[j] = data[j+1];
+				data[j+1] = temp;
+				isSwap = true;
+			}
+		}
+		if (!isSwap) return;
+		isSwap = false;
+	}
+}
+
+int findmodasort(int data[], int size)
+{
+	int countmax = 1;
+	int value = data[0];
+	int count = 1;
+	int valuemax = data[0];
+	for (int i = 1; i < size; ++i)
+	{
+		if (data[i-1] == data[i])
+		{
+			++countmax;
 		}
 		else
 		{
-			newval = val - (val % 10);
-			for (int i = 0; i < 12; i++)
+			if (count > countmax)
 			{
-				if (i % 2 == 0)
-				{
-					sum = sum + newval / ten % 10 * 1;
-					ten = ten / 10;
-				}
-				else
-				{
-					sum = sum + newval / ten % 10 * 3;
-					ten = ten / 10;
-				}
+				countmax = count;
+				valuemax = data[i-1];
+				count = 1;
 			}
-			kontrol = sum % 10;
-			newkontr = 10 - kontrol;
-			if ((val % 10) == newkontr)
-			{
-				cout << "Число " << val << " -- действительное ISBN-13" << endl;
-			}
-			else
-			{
-				cout << "Число " << val << " -- не действительное ISBN-13" << endl;
-			}
-			sum = 0;
-			ten = 1000000000000;
 		}
 	}
-	cout << "РАБОТА ОКОНЧЕНА" << endl;
+	return value;
+}
+
+int findmoda(int data[], int size)
+{
+	sortData(data, size);
+	return findmodasort(data, size);
+}
+
+void prinddata2d(int * a[], int sizeX, int sizeY)
+{
+	for(int i = 0; i < sizeY; ++i)
+	{
+		for (int j = 0; j < sizeX; ++j)
+		{
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+
+int main()
+{
+	/*int a[] = { 1,2,3,4,5 };
+	size_t
+	sum(a,SIZE);
+	cout << sizeof(a)/ sizeof(int) << endl;*/
+
+	/*int s[10] = {};
+	char a[] = { 'a','b', 'c', '\0' };
+	char b[] = "Hello";
+	cout << s << endl;
+	cout << a << endl;
+	cout << b << endl;
+	cout << CountLength(a) << endl;*/
+	
+	/*int data[] = { 4,7,3,8,9,7,3,9,9,3,3,10 };
+	sortData(data, sizeof(data) / sizeof(int));
+	cout << findmoda(data, sizeof(data)/sizeof(int)) << endl;*/
+
+	int a[2][3] = { {2,4,6},{4,8,10} };
+	p
 }
